@@ -478,51 +478,86 @@ h2 {
 }
 
 /* ── PROJECTS ── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: border-color 200ms ease, transform 200ms ease-out,
-    box-shadow 200ms ease-out;
+.project-item {
+  display: block;
   text-decoration: none;
   color: inherit;
-  display: block;
 }
-.project-card:active {
-  transform: scale(0.98);
+
+.project-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface);
+}
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* When WebGL planes take over, the DOM image becomes the invisible layout
+   anchor the plane tracks each frame. */
+.gl-on .project-media img {
+  opacity: 0;
+}
+
+.gl-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* above the page background, below nav (100) and text */
+  pointer-events: none;
+}
+.project-info {
+  position: relative;
+  z-index: 2;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .project-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px var(--shadow);
+  html:not(.gl-on) .project-item:hover .project-media img {
+    transform: scale(1.04);
   }
 }
 
-.project-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.8rem;
+.project-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.2rem;
+  padding-top: 1.2rem;
+  max-width: 640px;
 }
-
-.project-card h3 {
-  font-size: 1rem;
-  font-weight: 600;
+.project-number {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  padding-top: 0.35rem;
+}
+.project-info h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 0.4rem;
 }
-
-.project-card p {
-  font-size: 0.85rem;
+.project-info p {
+  grid-column: 2;
+  font-size: 0.92rem;
   color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+.project-info .project-tags {
+  grid-column: 2;
 }
 
 .project-tags {

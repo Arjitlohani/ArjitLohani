@@ -65,6 +65,7 @@ export const experience = [
 export const projects = [
   {
     icon: '☁️',
+    image: '/images/projects/recruitment.jpg',
     title: 'Recruitment App',
     description:
       'Fully functional Salesforce app built with LWC and Apex — validation rules, formula fields, screen flows, and proper test classes.',
@@ -73,6 +74,7 @@ export const projects = [
   },
   {
     icon: '🛒',
+    image: '/images/projects/ecommerce.jpg',
     title: 'E-commerce Website',
     description:
       'Group project where I built the major portion of the frontend and implemented login authentication.',
@@ -81,6 +83,7 @@ export const projects = [
   },
   {
     icon: '🏍️',
+    image: '/images/projects/bike.jpg',
     title: 'Bike Management System',
     description:
       'Management system with full CRUD implementation and an integrated billing system.',

@@ -20,7 +20,7 @@ export default function Preloader() {
     try {
       seen = sessionStorage.getItem('preloader-seen') === '1';
     } catch {
-      // sessionStorage unavailable — treat as first visit
+      // sessionStorage unavailable, treat as first visit
     }
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
@@ -57,7 +57,7 @@ export default function Preloader() {
     };
     rafId = requestAnimationFrame(tick);
 
-    // rAF pauses in background tabs — never leave the page stuck behind
+    // rAF pauses in background tabs; never leave the page stuck behind
     // the loader if the visitor opens it in one.
     const failsafe = window.setTimeout(finish, COUNT_MS + 1200);
 

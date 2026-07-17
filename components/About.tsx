@@ -11,11 +11,11 @@ export default function About() {
       <div className="about-grid">
         <Reveal className="about-text">
           <p>
-            I&apos;m a Salesforce developer with a proven track record of
-            building real-time components and complex backend logic — skilled
-            in both declarative and programmatic development. I care about
-            crafting solutions that optimize workflows and drive measurable
-            outcomes.
+            I&apos;m a Salesforce developer with a track record of building
+            real-time components and complex backend logic, and I&apos;m
+            comfortable with both declarative and programmatic development.
+            I like building things that make workflows genuinely faster, not
+            just fancier.
           </p>
           <p>
             Before Salesforce, I worked across the full stack: authentication

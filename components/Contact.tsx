@@ -9,7 +9,7 @@ export default function Contact() {
         <h2>Let&apos;s work together</h2>
         <p>
           I&apos;m currently open to new opportunities. Whether you have a
-          role, a project, or just want to say hi — my inbox is always open.
+          role, a project, or just want to say hi, my inbox is always open.
         </p>
         <div className="contact-links">
           <a href={`mailto:${siteConfig.email}`} className="contact-link">

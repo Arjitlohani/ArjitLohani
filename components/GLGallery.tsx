@@ -81,7 +81,7 @@ export default function GLGallery() {
         dpr: Math.min(window.devicePixelRatio, 2),
       });
     } catch {
-      return; // no WebGL — DOM images remain visible
+      return; // no WebGL, so DOM images remain visible
     }
     const gl = renderer.gl;
     const camera = new Camera(gl);

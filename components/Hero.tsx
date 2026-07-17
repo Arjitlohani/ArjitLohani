@@ -12,25 +12,25 @@ export default function Hero() {
         <h1 className="hero-title">
           <span className="line-mask">
             <span className="line" style={delay(100)}>
-              <span>{siteConfig.name}</span> —
+              Hi, I&apos;m <span>{siteConfig.name}</span>.
             </span>
           </span>
           <span className="line-mask">
             <span className="line" style={delay(180)}>
-              building for Salesforce
+              I build for Salesforce
             </span>
           </span>
           <span className="line-mask">
             <span className="line" style={delay(260)}>
-              &amp; the modern web.
+              and the modern web.
             </span>
           </span>
         </h1>
         <p className="hero-sub hero-enter" style={delay(350)}>
-          Software engineer specializing in the Salesforce ecosystem — Apex,
-          Lightning Web Components, and Agentforce — with a full-stack
-          background in React, Next.js, and Python. I turn complex business
-          problems into scalable, reliable applications.
+          I&apos;m a software engineer working mainly in the Salesforce
+          ecosystem: Apex, Lightning Web Components, and Agentforce. I also
+          build with React, Next.js, and Python. Most of my work is taking
+          messy business problems and turning them into apps that hold up.
         </p>
         <div className="hero-cta hero-enter" style={delay(430)}>
           <a href="#projects" className="btn btn-primary">

@@ -46,7 +46,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <noscript>
-          {/* Without JS the preloader never reveals the page — force content visible */}
+          {/* Without JS the preloader never reveals the page, so force content visible */}
           <style>{`.hero-enter,.hero-enter-photo,.line,.reveal{opacity:1 !important;transform:none !important}.preloader{display:none !important}`}</style>
         </noscript>
       </head>

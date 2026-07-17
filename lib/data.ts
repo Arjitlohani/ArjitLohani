@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: 'Arjit Lohani',
   domain: 'arjitlohani.com.np',
-  title: 'Arjit Lohani — Software Engineer',
+  title: 'Arjit Lohani | Software Engineer',
   description:
-    'Arjit Lohani — Software Engineer specializing in Salesforce (Apex, LWC) and full-stack web development with React and Next.js.',
+    'Arjit Lohani is a software engineer working in the Salesforce ecosystem (Apex, LWC) and building for the web with React and Next.js.',
   email: 'arjitloh223@gmail.com',
   github: 'https://github.com/Arjitlohani',
   linkedin: 'https://www.linkedin.com/in/arjit-lohani-035622211/',
@@ -26,35 +26,35 @@ export const skillGroups = [
 
 export const experience = [
   {
-    date: 'Jun 2025 — Present',
+    date: 'Jun 2025 - Present',
     role: 'Associate Software Engineer',
     company: 'ComplianceQuest · Lalitpur, Nepal (Hybrid)',
     description:
       'Salesforce developer focused on building scalable, high-performance solutions within the Salesforce ecosystem. Working in Apex and LWC, developing real-time components and complex backend logic.',
   },
   {
-    date: 'Nov 2024 — Jun 2025',
+    date: 'Nov 2024 - Jun 2025',
     role: 'Associate Software Engineer',
     company: 'ING Skill Academy · Kathmandu, Nepal',
     description:
       'Worked on lead and attendance systems, and hardware-integrated apps focusing on real-time data and dynamic UIs.',
   },
   {
-    date: 'Jul 2024 — Jan 2025',
+    date: 'Jul 2024 - Jan 2025',
     role: 'Software Engineer Trainee',
     company: 'Skill Horizon · India (Remote)',
     description:
       'Full-stack training and development: authentication, SQL and NoSQL databases, and building an e-commerce web app with Next.js.',
   },
   {
-    date: 'Dec 2023 — Jul 2024',
+    date: 'Dec 2023 - Jul 2024',
     role: 'Software Engineer Intern',
     company: 'ING Skill Academy · Kathmandu, Nepal',
     description:
       'Started as an intern building features across the stack, learning production engineering practices, and contributing to internal systems.',
   },
   {
-    date: '2021 — 2024',
+    date: '2021 - 2024',
     role: 'BSc (Hons) in Computing',
     company: 'Islington College · Kathmandu, Nepal',
     description:
@@ -68,7 +68,7 @@ export const projects = [
     image: '/images/projects/recruitment.jpg',
     title: 'Recruitment App',
     description:
-      'Fully functional Salesforce app built with LWC and Apex — validation rules, formula fields, screen flows, and proper test classes.',
+      'A working Salesforce app built with LWC and Apex, complete with validation rules, formula fields, screen flows, and proper test classes.',
     tags: ['Salesforce', 'Apex', 'LWC'],
     href: 'https://github.com/Arjitlohani',
   },

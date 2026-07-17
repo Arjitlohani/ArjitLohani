@@ -6,7 +6,7 @@ import Reveal from '@/components/Reveal';
 import { posts } from '@/lib/posts';
 
 export const metadata: Metadata = {
-  title: 'Blog — Arjit Lohani',
+  title: 'Blog | Arjit Lohani',
   description:
     'Practical, no-hype writing on AI tools, Salesforce, and the systems around them.',
 };

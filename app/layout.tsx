@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { siteConfig } from '@/lib/data';
+import Preloader from '@/components/Preloader';
+import SmoothScroll from '@/components/SmoothScroll';
+import Cursor from '@/components/Cursor';
 import './globals.css';
 
 const inter = Inter({
@@ -42,8 +45,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <noscript>
+          {/* Without JS the preloader never reveals the page — force content visible */}
+          <style>{`.hero-enter,.hero-enter-photo,.line,.reveal{opacity:1 !important;transform:none !important}.preloader{display:none !important}`}</style>
+        </noscript>
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
+        <Preloader />
+        <SmoothScroll />
+        <Cursor />
         {children}
       </body>
     </html>

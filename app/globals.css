@@ -43,6 +43,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis drives scrolling when active — native smooth would fight it */
+html.lenis {
+  scroll-behavior: auto;
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -221,7 +230,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-h1 span {
+.hero-title .line > span {
   color: var(--accent);
 }
 
@@ -267,19 +276,49 @@ h1 span {
   }
 }
 
-/* Hero entrance: ease-out fade-up, staggered. transform + opacity only. */
+/* Hero entrance: ease-out fade-up, staggered; held until the preloader
+   sets data-ready on <html>. transform + opacity only. */
 .hero-enter {
   opacity: 0;
-  transform: translateY(16px);
-  animation: enter 250ms ease-out forwards;
-  animation-delay: var(--enter-delay, 0ms);
+  transform: translateY(24px);
 }
 .hero-enter-photo {
   opacity: 0;
   transform: scale(0.95);
-  animation: enter-scale 250ms ease-out forwards;
-  animation-delay: 150ms;
   will-change: transform;
+}
+:root[data-ready='true'] .hero-enter {
+  animation: enter 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+:root[data-ready='true'] .hero-enter-photo {
+  animation: enter-scale 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 300ms;
+}
+
+/* Editorial title: masked lines sweep up out of overflow-hidden wrappers */
+.hero-title {
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  line-height: 1.05;
+}
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em; /* keep descenders (g, j, y) inside the mask */
+  margin-bottom: -0.08em;
+}
+.line {
+  display: block;
+  transform: translateY(110%);
+}
+:root[data-ready='true'] .line {
+  animation: line-up 750ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+@keyframes line-up {
+  to {
+    transform: translateY(0);
+  }
 }
 @keyframes enter {
   to {
@@ -589,16 +628,95 @@ footer {
 }
 
 /* ── SCROLL REVEAL ──
-   Entering UI: ease-out, 250ms, small translate — per web-animation-design. */
+   Entering UI: expressive ease-out sweep (portfolio motion can breathe a
+   little more than product UI — still transform/opacity only). */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 250ms ease-out, transform 250ms ease-out;
+  transform: translateY(24px);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── PRELOADER ── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  transition: transform 650ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.preloader-exit {
+  transform: translateY(-100%);
+}
+.preloader-name {
+  position: absolute;
+  bottom: 2rem;
+  left: 5%;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.preloader-count {
+  font-family: var(--mono);
+  font-size: clamp(4rem, 14vw, 9rem);
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor-dot,
+.cursor-ring {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  pointer-events: none;
+  border-radius: 50%;
+}
+body.has-cursor .cursor-dot,
+body.has-cursor .cursor-ring {
+  display: block;
+}
+body.has-cursor,
+body.has-cursor a,
+body.has-cursor button {
+  cursor: none;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--accent);
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid var(--accent-border);
+}
+.cursor-ring::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+body.cursor-hover .cursor-ring::after {
+  opacity: 1;
+  transform: scale(1.4);
 }
 
 /* ── REDUCED MOTION ── */
@@ -608,7 +726,8 @@ footer {
   }
   .reveal,
   .hero-enter,
-  .hero-enter-photo {
+  .hero-enter-photo,
+  .line {
     animation: none;
     transition: none;
     opacity: 1;
@@ -617,6 +736,11 @@ footer {
   .hero-tag::before,
   .hero-photo::before {
     animation: none;
+  }
+  .preloader,
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
   }
   *,
   *::before,

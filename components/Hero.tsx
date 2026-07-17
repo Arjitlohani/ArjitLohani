@@ -2,23 +2,37 @@ import Image from 'next/image';
 import { siteConfig } from '@/lib/data';
 import portrait from '@/public/images/arjit.jpg';
 
+const delay = (ms: number) => ({ '--enter-delay': `${ms}ms` } as React.CSSProperties);
+
 export default function Hero() {
   return (
     <section id="hero">
       <div>
         <div className="hero-tag hero-enter">Available for opportunities</div>
-        <h1 className="hero-enter" style={{ '--enter-delay': '50ms' } as React.CSSProperties}>
-          Hi, I&apos;m <span>{siteConfig.name}.</span>
-          <br />
-          I build for Salesforce &amp; the web.
+        <h1 className="hero-title">
+          <span className="line-mask">
+            <span className="line" style={delay(100)}>
+              <span>{siteConfig.name}</span> —
+            </span>
+          </span>
+          <span className="line-mask">
+            <span className="line" style={delay(180)}>
+              building for Salesforce
+            </span>
+          </span>
+          <span className="line-mask">
+            <span className="line" style={delay(260)}>
+              &amp; the modern web.
+            </span>
+          </span>
         </h1>
-        <p className="hero-sub hero-enter" style={{ '--enter-delay': '100ms' } as React.CSSProperties}>
+        <p className="hero-sub hero-enter" style={delay(350)}>
           Software engineer specializing in the Salesforce ecosystem — Apex,
           Lightning Web Components, and Agentforce — with a full-stack
           background in React, Next.js, and Python. I turn complex business
           problems into scalable, reliable applications.
         </p>
-        <div className="hero-cta hero-enter" style={{ '--enter-delay': '150ms' } as React.CSSProperties}>
+        <div className="hero-cta hero-enter" style={delay(430)}>
           <a href="#projects" className="btn btn-primary">
             View my work ↓
           </a>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { siteConfig } from '@/lib/data';
-import Preloader from '@/components/Preloader';
 import SmoothScroll from '@/components/SmoothScroll';
 import Cursor from '@/components/Cursor';
 import './globals.css';
@@ -46,12 +45,11 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <noscript>
-          {/* Without JS the preloader never reveals the page, so force content visible */}
-          <style>{`.hero-enter,.hero-enter-photo,.line,.reveal{opacity:1 !important;transform:none !important}.preloader{display:none !important}`}</style>
+          {/* Scroll reveals need JS, so force that content visible without it */}
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
-        <Preloader />
         <SmoothScroll />
         <Cursor />
         {children}

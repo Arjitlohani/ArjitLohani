@@ -276,22 +276,18 @@ h1 {
   }
 }
 
-/* Hero entrance: ease-out fade-up, staggered; held until the preloader
-   sets data-ready on <html>. transform + opacity only. */
+/* Hero entrance: ease-out fade-up, staggered on load.
+   transform + opacity only. */
 .hero-enter {
   opacity: 0;
   transform: translateY(24px);
+  animation: enter 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--enter-delay, 0ms);
 }
 .hero-enter-photo {
   opacity: 0;
   transform: scale(0.95);
   will-change: transform;
-}
-:root[data-ready='true'] .hero-enter {
-  animation: enter 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: var(--enter-delay, 0ms);
-}
-:root[data-ready='true'] .hero-enter-photo {
   animation: enter-scale 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 300ms;
 }
@@ -310,8 +306,6 @@ h1 {
 .line {
   display: block;
   transform: translateY(110%);
-}
-:root[data-ready='true'] .line {
   animation: line-up 750ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--enter-delay, 0ms);
 }
@@ -862,36 +856,6 @@ footer {
   transform: translateY(0);
 }
 
-/* ── PRELOADER ── */
-.preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  transition: transform 650ms cubic-bezier(0.76, 0, 0.24, 1);
-}
-.preloader-exit {
-  transform: translateY(-100%);
-}
-.preloader-name {
-  position: absolute;
-  bottom: 2rem;
-  left: 5%;
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-.preloader-count {
-  font-family: var(--mono);
-  font-size: clamp(4rem, 14vw, 9rem);
-  font-weight: 500;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
 /* ── CUSTOM CURSOR ── */
 .cursor-dot,
 .cursor-ring {
@@ -957,7 +921,6 @@ body.cursor-hover .cursor-ring::after {
   .hero-photo::before {
     animation: none;
   }
-  .preloader,
   .cursor-dot,
   .cursor-ring {
     display: none;
